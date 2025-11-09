@@ -1,0 +1,1 @@
+export declare function adjustSankeySize(inputGraph: any, useManualScale: any, nodePadding: any, nodeWidth: any, scaleDomain: any, scaleRange: any, circularLinkPortionTopBottom: any, circularLinkPortionLeftRight: any, scale: any, baseRadius: any): any;

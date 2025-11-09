@@ -1,0 +1,11 @@
+export declare function sortLinkSourceYAscending(link1: any, link2: any): number;
+export declare function sortLinkSourceYDescending(link1: any, link2: any): number;
+export declare function sortLinkTargetYAscending(link1: any, link2: any): number;
+export declare function sortLinkTargetYDescending(link1: any, link2: any): number;
+export declare function ascendingSourceBreadth(a: any, b: any): number;
+export declare function ascendingTargetBreadth(a: any, b: any): number;
+export declare function ascendingBreadth(a: any, b: any): number;
+export declare function sortLinkColumnAscending(link1: any, link2: any): number;
+export declare function sortSourceLinks(inputGraph: any, id: any): any;
+export declare function sortTargetLinks(inputGraph: any, id: any): any;
+export declare function sortLinks(inputGraph: any): any;

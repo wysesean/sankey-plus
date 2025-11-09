@@ -1,6 +1,7 @@
+// @ts-nocheck
 import {min, linkHorizontal} from "d3";
 
-import { selfLinking, onlyCircularLink } from "./linkAttributes.js";
+import { selfLinking, onlyCircularLink } from "./linkAttributes";
 
 import {
   sortLinkSourceYAscending,
@@ -8,7 +9,7 @@ import {
   sortLinkTargetYAscending,
   sortLinkTargetYDescending,
   sortLinkColumnAscending,
-} from "./sortGraph.js";
+} from "./sortGraph";
 
 export function addCircularPathData(
   inputGraph,

@@ -1,7 +1,19 @@
-import { find } from "./find.js";
-//import { constant } from './constant.js';
-import {group, sum, mean, min, max, select, range} from "d3";
-import { findCircuits } from "./networks/elementaryCircuits.js";
+// @ts-nocheck
+import { find } from "./find";
+//import { constant } from './constant';
+import {
+  group,
+  groups,
+  sum,
+  mean,
+  min,
+  max,
+  select,
+  range,
+  linkHorizontal,
+  scaleLinear,
+} from "d3";
+import { findCircuits } from "./networks/elementaryCircuits";
 import {
   getNodeID,
   value,
@@ -9,20 +21,20 @@ import {
   linkTargetCenter,
   linkSourceCenter,
   nodeCenter,
-} from "./nodeAttributes.js";
-import { selfLinking } from "./linkAttributes.js";
-import { left, right, center, justify } from "./align.js";
-import { clone } from "./clone.js"; //https://github.com/pvorb/clone
+} from "./nodeAttributes";
+import { selfLinking } from "./linkAttributes";
+import { left, right, center, justify } from "./align";
+import { clone } from "./clone"; //https://github.com/pvorb/clone
 import {
   ascendingBreadth,
   ascendingTargetBreadth,
   ascendingSourceBreadth,
   sortSourceLinks,
   sortTargetLinks,
-} from "./sortGraph.js";
-import { addCircularPathData } from "./circularPath.js";
-import { adjustSankeySize } from "./adjustSankeySize.js";
-import { adjustGraphExtents } from "./adjustGraphExtents.js";
+} from "./sortGraph";
+import { addCircularPathData } from "./circularPath";
+import { adjustSankeySize } from "./adjustSankeySize";
+import { adjustGraphExtents } from "./adjustGraphExtents";
 
 //internal functions
 
@@ -424,8 +436,7 @@ function computeNodeBreadths() {
   const setNodePositions = this.config.nodes.setPositions;
   const id = this.config.id;
 
-  let columns = d3
-    .groups(graph.nodes, (d) => d.column)
+  let columns = groups(graph.nodes, (d) => d.column)
     .sort((a, b) => a[0] - b[0])
     .map((d) => d[1]);
 
@@ -525,8 +536,7 @@ function resolveCollisionsAndRelax() {
   const minNodePadding = this.config.nodes.minPadding;
   const iterations = this.config.iterations;
 
-  let columns = d3
-    .groups(graph.nodes, (d) => d.column)
+  let columns = groups(graph.nodes, (d) => d.column)
     .sort((a, b) => a[0] - b[0])
     .map((d) => d[1]);
 
@@ -738,8 +748,7 @@ function fillHeight(inputGraph) {
     var chartHeight = graph.y1 - graph.y0;
     var ratio = chartHeight / currentHeight;
 
-    let moveScale = d3
-      .scaleLinear()
+    let moveScale = scaleLinear()
       .domain([minY0, maxY1])
       .range([graph.y0, graph.y1]);
 
@@ -863,8 +872,7 @@ function addVirtualPathData(inputGraph, virtualLinkType) {
 
       replacedLink.path = pathString;
     } else {
-      var normalPath = d3
-        .linkHorizontal()
+      const normalPath = linkHorizontal()
         .source(function (d) {
           var x = d.x0;
           var y = d.y0;
@@ -903,7 +911,7 @@ function addVirtualPathData(inputGraph, virtualLinkType) {
   return graph;
 }
 
-class SankeyChart {
+export class SankeyChart {
   constructor(config) {
     if (!config.nodes.data) {
       throw "Please supply node data";
@@ -1270,4 +1278,4 @@ class SankeyChart {
   }
 } // End of draw()
 
-export { SankeyChart };
+export default SankeyChart;

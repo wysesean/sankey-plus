@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {min, max} from "d3-array";
 
 export function adjustGraphExtents(

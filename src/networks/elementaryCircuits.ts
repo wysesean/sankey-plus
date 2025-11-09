@@ -1,3 +1,4 @@
+// @ts-nocheck
 //var tarjan = require('strongly-connected-components');
 
 function stronglyConnectedComponents(adjList) {
