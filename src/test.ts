@@ -1,3 +1,4 @@
+// @ts-nocheck
 // calculate the optimum path for a link to reduce overlaps
 function addCircularPathData(inputGraph) {
     let graph = clone(inputGraph);

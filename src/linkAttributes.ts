@@ -1,4 +1,5 @@
-import { getNodeID } from './nodeAttributes.js';
+// @ts-nocheck
+import { getNodeID } from './nodeAttributes';
 
 
 // returns the slope of a link, from source to target

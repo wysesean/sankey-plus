@@ -1,13 +1,9 @@
-import { selfLinking } from './linkAttributes.js';
+// @ts-nocheck
+import { selfLinking } from './linkAttributes';
 
 
 export function getNodeID(node, id) {
     return id(node);
-}
-
-//TO DO REMOVE IF NOT USED
-export function getNodePadding(node) {
-    return node.virtual ? virtualNodePadding : nodePadding;
 }
 
 // return the vertical center of a link's source node

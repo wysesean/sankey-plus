@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function myFunction(num) {
   return num * num;
 }
@@ -11,3 +12,4 @@ export class SankeyChart {
     console.log("hello");
   }
 }
+

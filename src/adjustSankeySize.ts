@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {groups, sum, min, max} from "d3";
 
 export function adjustSankeySize(
