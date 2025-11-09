@@ -1,1 +1,4 @@
-export declare function findCircuits(edges: any, cb: any): any[];
+export declare function findCircuits(
+  edges: number[][],
+  cb?: (cycle: number[]) => void
+): number[][];

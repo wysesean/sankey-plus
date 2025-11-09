@@ -1,6 +1,8 @@
+import type { SankeyChartConfig } from "./index";
+
 export declare class SankeyChart {
-    constructor(config: any);
+    constructor(config: SankeyChartConfig);
     process(): void;
-    draw(id: any): void;
+    draw(id: string): void;
 }
 export default SankeyChart;
