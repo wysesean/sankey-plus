@@ -1,5 +1,4 @@
-import { useEffect, useRef } from "react";
-import SankeyChart, { type SankeyChartConfig } from "sankey-plus";
+import { SankeyChartComponent, type SankeyChartConfig } from "sankey-plus";
 import { nodes, links } from "./data";
 import "./App.css";
 
@@ -30,24 +29,6 @@ const chartConfig: SankeyChartConfig = {
 };
 
 function App() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!containerRef.current) {
-      return;
-    }
-
-    const chart = new SankeyChart(chartConfig);
-    chart.process();
-    chart.draw("sankey-container");
-
-    return () => {
-      if (containerRef.current) {
-        containerRef.current.innerHTML = "";
-      }
-    };
-  }, []);
-
   return (
     <div className="app">
       <header>
@@ -57,7 +38,11 @@ function App() {
           React component using Vite and TypeScript.
         </p>
       </header>
-      <div ref={containerRef} id="sankey-container" className="sankey-wrapper" />
+      <SankeyChartComponent
+        id="sankey-container"
+        className="sankey-wrapper"
+        config={chartConfig}
+      />
       <footer>
         <p>
           Nodes and links are defined in <code>src/data.ts</code>. Try editing the

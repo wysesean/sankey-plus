@@ -1,4 +1,5 @@
 import SankeyChartBase from "./sankeyPlus";
+import type { CSSProperties, ReactElement } from "react";
 
 export interface SankeyNodeDatum {
   [key: string]: unknown;
@@ -145,5 +146,16 @@ export interface SankeyChartConfig {
 export declare class SankeyChart extends SankeyChartBase {
   constructor(config: SankeyChartConfig);
 }
+
+export interface SankeyChartComponentProps {
+  config: SankeyChartConfig;
+  id?: string;
+  className?: string;
+  style?: CSSProperties;
+}
+
+export declare function SankeyChartComponent(
+  props: SankeyChartComponentProps
+): ReactElement | null;
 
 export default SankeyChart;

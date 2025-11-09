@@ -105,6 +105,13 @@ let config = {
 ## React + Vite example
 
 The `examples/vite-react` directory contains a Vite project that demonstrates how to render `sankey-plus` inside a React + TypeScript application.
+The package exports a `SankeyChartComponent` React component so you can declaratively render charts without managing lifecycle hooks yourself:
+
+```tsx
+import { SankeyChartComponent } from "sankey-plus";
+
+<SankeyChartComponent config={chartConfig} />;
+```
 
 ```bash
 cd examples/vite-react
