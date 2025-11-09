@@ -1,15 +1,92 @@
 import SankeyChartBase from "./sankeyPlus";
 
 export interface SankeyNodeDatum {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface SankeyLinkDatum {
-  source: SankeyNodeDatum | string;
-  target: SankeyNodeDatum | string;
+  source: SankeyNodeDatum | string | number;
+  target: SankeyNodeDatum | string | number;
   value?: number;
-  [key: string]: any;
+  [key: string]: unknown;
 }
+
+export type SankeyCircularLinkType = "top" | "bottom";
+
+export interface SankeyCircularPathData {
+  arcRadius?: number;
+  rightNodeBuffer?: number;
+  leftNodeBuffer?: number;
+  sourceWidth?: number;
+  sourceX?: number;
+  targetX?: number;
+  sourceY?: number;
+  targetY?: number;
+  rightSmallArcRadius?: number;
+  rightLargeArcRadius?: number;
+  leftSmallArcRadius?: number;
+  leftLargeArcRadius?: number;
+  verticalFullExtent?: number;
+  verticalBuffer?: number;
+  verticalRightInnerExtent?: number;
+  verticalLeftInnerExtent?: number;
+  rightInnerExtent?: number;
+  leftInnerExtent?: number;
+  rightFullExtent?: number;
+  leftFullExtent?: number;
+}
+
+export type NodeIdentifier = string | number;
+
+export interface SankeyGraphNode extends SankeyNodeDatum {
+  index: number;
+  column: number;
+  depth: number;
+  height: number;
+  value: number;
+  x0: number;
+  x1: number;
+  y0: number;
+  y1: number;
+  y: number;
+  partOfCycle?: boolean;
+  circularLinkType?: SankeyCircularLinkType;
+  virtual?: boolean;
+  replacedLink?: number;
+  sourceLinks: SankeyGraphLink[];
+  targetLinks: SankeyGraphLink[];
+}
+
+export interface SankeyGraphLink extends SankeyLinkDatum {
+  index: number;
+  source: SankeyGraphNode;
+  target: SankeyGraphNode;
+  value: number;
+  width: number;
+  y0: number;
+  y1: number;
+  circular?: boolean;
+  circularLinkID?: number;
+  circularLinkType?: SankeyCircularLinkType;
+  circularPathData?: SankeyCircularPathData;
+  path?: string;
+  virtual?: boolean;
+}
+
+export interface SankeyGraph {
+  nodes: SankeyGraphNode[];
+  links: SankeyGraphLink[];
+  virtualLinks?: SankeyGraphLink[];
+  virtualNodes?: SankeyGraphNode[];
+  x0: number;
+  x1: number;
+  y0: number;
+  y1: number;
+  ky: number;
+  py: number;
+}
+
+export type NodeIdAccessor = (node: SankeyGraphNode) => NodeIdentifier;
 
 export interface SankeyNodeOptions {
   data: SankeyNodeDatum[];

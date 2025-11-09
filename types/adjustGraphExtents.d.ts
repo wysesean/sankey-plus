@@ -1,1 +1,9 @@
-export declare function adjustGraphExtents(inputGraph: any, chartPadding: any, svgHeight: any, svgWidth: any, nodeWidth: any): any;
+import type { SankeyGraph } from "./index";
+
+export declare function adjustGraphExtents(
+  inputGraph: SankeyGraph,
+  chartPadding: number,
+  svgHeight: number,
+  svgWidth: number,
+  nodeWidth: number
+): SankeyGraph;

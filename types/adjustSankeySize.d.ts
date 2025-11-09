@@ -1,1 +1,14 @@
-export declare function adjustSankeySize(inputGraph: any, useManualScale: any, nodePadding: any, nodeWidth: any, scaleDomain: any, scaleRange: any, circularLinkPortionTopBottom: any, circularLinkPortionLeftRight: any, scale: any, baseRadius: any): any;
+import type { SankeyGraph } from "./index";
+
+export declare function adjustSankeySize(
+  inputGraph: SankeyGraph,
+  useManualScale?: boolean,
+  nodePadding?: number,
+  nodeWidth?: number,
+  scaleDomain?: [number, number],
+  scaleRange?: [number, number],
+  circularLinkPortionTopBottom?: number,
+  circularLinkPortionLeftRight?: number,
+  scale?: number,
+  baseRadius?: number
+): SankeyGraph;

@@ -19,12 +19,24 @@
  *    should be cloned as well. Non-enumerable properties on the prototype
  *    chain will be ignored. (optional - false by default)
 */
-export declare function clone(parent: any, circular: any, depth: any, prototype: any, includeNonEnumerable: any): any;
+export interface CloneOptions {
+    circular?: boolean;
+    depth?: number;
+    prototype?: object | null;
+    includeNonEnumerable?: boolean;
+}
+export declare function clone<T>(
+    parent: T,
+    circular?: boolean | CloneOptions,
+    depth?: number,
+    prototype?: object | null,
+    includeNonEnumerable?: boolean
+): T;
 export declare namespace clone {
-    var clonePrototype: (parent: any) => any;
-    var __objToStr: (o: any) => any;
-    var __isDate: (o: any) => boolean;
-    var __isArray: (o: any) => boolean;
-    var __isRegExp: (o: any) => boolean;
-    var __getRegExpFlags: (re: any) => string;
+    const clonePrototype: <T>(parent: T) => T;
+    const __objToStr: (o: unknown) => string;
+    const __isDate: (o: unknown) => o is Date;
+    const __isArray: (o: unknown) => o is unknown[];
+    const __isRegExp: (o: unknown) => o is RegExp;
+    const __getRegExpFlags: (re: RegExp) => string;
 }

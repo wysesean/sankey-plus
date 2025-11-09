@@ -1,5 +1,7 @@
-export declare function myFunction(num: any): number;
+import type { SankeyChartConfig } from "./index";
+
+export declare function myFunction(num: number): number;
 export declare class SankeyChart {
-    constructor(config: any);
+    constructor(config: SankeyChartConfig);
     hello(): void;
 }

@@ -1,4 +1,6 @@
-export declare function left(node: any): any;
-export declare function right(node: any, n: any): number;
-export declare function justify(node: any, n: any): any;
-export declare function center(node: any): any;
+import type { SankeyGraphNode } from "./index";
+
+export declare function left(node: SankeyGraphNode): number;
+export declare function right(node: SankeyGraphNode, n: number): number;
+export declare function justify(node: SankeyGraphNode, n: number): number;
+export declare function center(node: SankeyGraphNode): number;
