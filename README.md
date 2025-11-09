@@ -16,25 +16,25 @@ This library enhances those to provide:
 
 ## API Reference
 
-Import *SankeyChart* from *sankeyPlus.js*:
+Import *SankeyChart* from *sankeyPlus.js* (or from the published package when installed via npm):
 
 ```JavaScript
-import { SankeyChart } from './sankeyPlus.js'
+import SankeyChart from "sankey-plus";
 ```
 
 Create a new chart:
 
 ```JavaScript
-let chart = new SankeyChart(element, config);
+const chart = new SankeyChart(config);
 ```
 
-* **element**: An HTML element, such as a DIV, which will contain the SVG element created by SankeyChart.draw()
 * **config**: an options object containing the configuration for the sankey chart.
 
-To render the chart, call the *draw()* method, which creates an SVG element in the specified HTML element:
+To render the chart, call the *process()* and *draw()* methods. `process()` prepares the layout while `draw()` injects the SVG into the provided container id:
 
 ```JavaScript
-chart.draw();
+chart.process();
+chart.draw("sankey-container-id");
 ```
 
 ## Config options:
@@ -95,9 +95,21 @@ let config = {
 
 ### Arrows
 | Option      | Description | Default       | Mandatory       |
-| ----------- | ----------- |  ----------- | ----------- | 
+| ----------- | ----------- |  ----------- | ----------- |
 | enabled      | Select whether to show arrows. True/False       | false       |  No       |
 | color   | Color of the arrow. Can use Hex code or CSS color name       | DarkSlateGrey        | No        |
 | length   | Length of the arrow, in pixels        | 10        | No        |
 | gap   | Length of the gap between each arrow, in pixels        | 25        | No        |
 | headSize   | width of the arrow head, in pixels        | 4        | No        |
+
+## React + Vite example
+
+The `examples/vite-react` directory contains a Vite project that demonstrates how to render `sankey-plus` inside a React + TypeScript application.
+
+```bash
+cd examples/vite-react
+npm install
+npm run dev
+```
+
+The example links to the package in this repository (`"sankey-plus": "file:../../"`), so you can iterate on the library locally and immediately test your changes in the browser.
